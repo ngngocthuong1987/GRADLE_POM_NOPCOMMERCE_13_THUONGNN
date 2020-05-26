@@ -1,4 +1,4 @@
-package configreport;
+package actions.commons;
 
 
 import java.io.File;
@@ -22,8 +22,6 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-
-import actions.commons.AbstractTest;
 
 public class ReportListener extends AbstractTest implements ITestListener {
 
@@ -55,7 +53,7 @@ public class ReportListener extends AbstractTest implements ITestListener {
 	@Override
 	public void onTestStart(ITestResult arg0) {
 		System.out.println("The execution of the main test starts now");
-		logReport = extent.createTest(arg0.getTestClass().getName()
+		logReport = extent.createTest(arg0.getInstanceName()
 				.concat(".")
 				.concat(arg0.getMethod().getMethodName()));
 	}
