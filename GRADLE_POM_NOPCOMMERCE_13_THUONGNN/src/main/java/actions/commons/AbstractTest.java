@@ -101,8 +101,7 @@ public class AbstractTest {
 		return checkEquals(actual, expected);
 	}
 
-	public WebDriver getDriver() {
-		// TODO Auto-generated method stub
-		return driver;
+	protected WebDriver getDriver() {
+		return this.driver;
 	}
 }
