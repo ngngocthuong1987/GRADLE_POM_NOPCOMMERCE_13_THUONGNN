@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false">
+  <listeners>
+      <listener class-name="test.ReportListener"/>
+  </listeners>
+  <test name="runTest">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="test.NewTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
