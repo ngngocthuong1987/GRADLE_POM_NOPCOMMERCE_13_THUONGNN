@@ -14,13 +14,13 @@ import actions.commons.PageGeneratorManager;
 import actions.pageObjects.HomePageObject;
 import actions.pageObjects.LoginPageObject;
 import actions.pageObjects.RegisterPageObject;
+import testdata.Payment.LoginData;
 
 public class Login_06_RegisterAndLogin_MultiBrowser extends AbstractTest {
 	AbstractPage abstractPage;
 
 	private WebDriver driver;
 	private String email = "thuongnn_" + randomNumber() + "@gmail.com";
-	private String password = "abc123456";
 	private HomePageObject homePageObject;
 	private LoginPageObject loginPageObject;
 
@@ -42,16 +42,16 @@ public class Login_06_RegisterAndLogin_MultiBrowser extends AbstractTest {
 		Thread.sleep(2000);
 		registerPageObject.selectMaleGender();
 		Thread.sleep(2000);
-		registerPageObject.inputFistName("Thuong");
+		registerPageObject.inputFistName(LoginData.FIRST_NAME);
 		Thread.sleep(2000);
-		registerPageObject.inputLastName("Nguyen");
-		registerPageObject.selectBirthDay("16");
-		registerPageObject.selectBirthMonth("February");
-		registerPageObject.selectBirthYear("1987");
+		registerPageObject.inputLastName(LoginData.LAST_NAME);
+		registerPageObject.selectBirthDay(LoginData.BIRTH_DAY);
+		registerPageObject.selectBirthMonth(LoginData.BIRTH_MONTH);
+		registerPageObject.selectBirthYear(LoginData.BIRTH_YEAR);
 		registerPageObject.inputEmail(email);
-		registerPageObject.inputCompanyName("FPT Software Company");
-		registerPageObject.inputPassword(password);
-		registerPageObject.inputConfirmPassword(password);
+		registerPageObject.inputCompanyName(LoginData.COMPANY);
+		registerPageObject.inputPassword(LoginData.PASSWORD);
+		registerPageObject.inputConfirmPassword(LoginData.PASSWORD);
 		registerPageObject.clickRegisterButton();
 
 		registerPageObject.isRegistSuccess();
@@ -66,7 +66,7 @@ public class Login_06_RegisterAndLogin_MultiBrowser extends AbstractTest {
 		loginPageObject = homePageObject.clickToLoginPage();
 
 		loginPageObject.inputToEmailTextBox(email);
-		loginPageObject.inputToPasswordTextBox(password);
+		loginPageObject.inputToPasswordTextBox(LoginData.PASSWORD);
 		homePageObject = loginPageObject.clickToLoginButton();
 
 		homePageObject.isLoginSuccess();
