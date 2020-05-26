@@ -32,10 +32,13 @@ public class ReportListener extends AbstractTest implements ITestListener {
 	// This belongs to ITestListener and will execute before starting of Test set/batch
 	@Override
 	public void onStart(ITestContext arg0) {
-		Reporter.log("About to begin executing Test " + arg0.getName(), true);
-		String date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());;
-		htmlReporter  = new ExtentHtmlReporter(".\\report\\TestReport_".concat(date).concat(".html"));
-		extent = new ExtentReports();  //create object of ExtentReports
+		Reporter.log("About to begin executing Test: " + arg0.getName(), true);
+
+		String dateTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+		String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
+
+		htmlReporter  = new ExtentHtmlReporter(".\\report\\".concat(date).concat("\\TestReport_").concat(dateTime).concat(".html"));
+		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
 
 		htmlReporter.config().setDocumentTitle("Automation Report");
@@ -52,7 +55,9 @@ public class ReportListener extends AbstractTest implements ITestListener {
 	// This belongs to ITestListener and will execute before the main test start (@Test)
 	@Override
 	public void onTestStart(ITestResult arg0) {
-		System.out.println("The execution of the main test starts now");
+		Reporter.log("Start @Test: " + arg0.getName(), true);
+
+		// Create report for test case
 		logReport = extent.createTest(arg0.getInstanceName()
 				.concat(".")
 				.concat(arg0.getMethod().getMethodName()));
@@ -61,7 +66,9 @@ public class ReportListener extends AbstractTest implements ITestListener {
 	// This belongs to ITestListener and will execute, once the Test set/batch is finished
 	@Override
 	public void onFinish(ITestContext arg0) {
-		Reporter.log("Completed executing test " + arg0.getName(), true);
+		Reporter.log("Completed executing Test: " + arg0.getName(), true);
+
+		// Flush report
 		extent.flush();
 	}
 
@@ -93,7 +100,6 @@ public class ReportListener extends AbstractTest implements ITestListener {
 	// This is the method which will be executed in case of test pass or fail
 	// This will provide the information on the test
 	private void printTestResults(ITestResult result) {
-
 		Object testClass = result.getInstance();
 		WebDriver driver = ((AbstractTest) testClass).getDriver();
 

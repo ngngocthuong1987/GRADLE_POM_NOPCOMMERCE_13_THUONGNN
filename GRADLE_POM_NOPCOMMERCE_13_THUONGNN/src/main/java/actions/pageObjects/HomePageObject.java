@@ -27,7 +27,7 @@ public class HomePageObject extends AbstractPages {
 	}
 
 	public boolean isLoginSuccess() {
-		return getCurrentUrl(driver).equals("https://demo.nopcommerce.com/");
+		return getCurrentUrl(driver).equals("https://demo.nopcommerce.com/abc");
 	}
 
 }

@@ -3,6 +3,7 @@ package testcases.com.nopcommerce.payment;
 import java.util.Random;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -29,9 +30,7 @@ public class Login_06_RegisterAndLogin_MultiBrowser extends AbstractTest {
 	@Parameters({"browser"})
 	@BeforeClass
 	public void beforeClass(String browserName) {
-
 		driver = getBrowser(browserName);
-
 		homePageObject = PageGeneratorManager.getHomePageObject(driver);
 	}
 
@@ -69,7 +68,7 @@ public class Login_06_RegisterAndLogin_MultiBrowser extends AbstractTest {
 		loginPageObject.inputToPasswordTextBox(LoginData.PASSWORD);
 		homePageObject = loginPageObject.clickToLoginButton();
 
-		homePageObject.isLoginSuccess();
+		Assert.assertEquals(homePageObject.getCurrentUrl(driver), "https://demo.nopcommerce.com/abc");
 	}
 
 	@AfterClass
