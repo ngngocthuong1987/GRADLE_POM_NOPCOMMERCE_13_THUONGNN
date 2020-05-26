@@ -15,10 +15,10 @@ public class AbstractTest {
 
 	public WebDriver getBrowser(String browserName) {
 		if ("firefox".equalsIgnoreCase(browserName)) {
-			System.setProperty("webdriver.gecko.driver", ".//libraries//geckodriver.exe");
+			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 		} else if ("headless_firefox".equalsIgnoreCase(browserName)) {
-			System.setProperty("webdriver.gecko.driver", ".//libraries//geckodriver.exe");
+			WebDriverManager.firefoxdriver().setup();
 			FirefoxOptions options = new FirefoxOptions();
 			options.addArguments("--headless");
 			options.addArguments("window-size=1920x1080");
@@ -27,14 +27,14 @@ public class AbstractTest {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 		} else if ("headless_chrome".equalsIgnoreCase(browserName)) {
-			System.setProperty("webdriver.chrome.driver", ".//libraries//chromedriver.exe");
+			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("headless");
 			options.addArguments("window-size=1920x1080");
 			driver = new ChromeDriver(options);
 		}
 
-		driver.get("https://vnexpress.net/");
+		driver.get(Constants.URL);
 		driver.manage().window().maximize();
 		return driver;
 	}

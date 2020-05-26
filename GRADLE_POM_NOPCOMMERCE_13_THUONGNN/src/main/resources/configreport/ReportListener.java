@@ -1,4 +1,5 @@
-package test;
+package configreport;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +22,8 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+
+import actions.commons.AbstractTest;
 
 public class ReportListener extends AbstractTest implements ITestListener {
 
