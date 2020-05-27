@@ -14,7 +14,7 @@ public class MyDashboardPageObject extends AbstractPages {
 	}
 
 	public boolean isMyAccountLinkDisplayed(String value) {
-		waitToElementDisplayed(driver, MyDashBoradPageUI.MY_ACCOUNT_LINK);
+		waitToElementDisplayedByXpath(driver, MyDashBoradPageUI.MY_ACCOUNT_LINK);
 		return isElementDisplay(driver, MyDashBoradPageUI.MY_ACCOUNT_LINK);
 	}
 }

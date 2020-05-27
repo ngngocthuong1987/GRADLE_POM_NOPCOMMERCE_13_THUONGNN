@@ -15,29 +15,24 @@ public class LoginPageObject extends AbstractPages {
 	}
 
 	public HomePageObject clickToLoginButton() {
-		waitToElementDisplayed(driver, LoginPageUI.LOGIN_BUTTON);
+		waitToElementDisplayedByXpath(driver, LoginPageUI.LOGIN_BUTTON);
 		clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
 		return PageGeneratorManager.getHomePageObject(driver);
 	}
 
 	public void inputToEmailTextBox(String email) {
-		waitToElementDisplayed(driver, LoginPageUI.EMAIL_TEXTBOX);
+		waitToElementDisplayedByXpath(driver, LoginPageUI.EMAIL_TEXTBOX);
 		sendKeyToElement(driver, LoginPageUI.EMAIL_TEXTBOX, email);
 	}
 
 	public void inputToPasswordTextBox(String password) {
-		waitToElementDisplayed(driver, LoginPageUI.PASSWORD_TEXTBOX);
+		waitToElementDisplayedByXpath(driver, LoginPageUI.PASSWORD_TEXTBOX);
 		sendKeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);
 	}
 
-	public boolean isErrorEmailMessageDisplayed(String errorMessage) {
-		waitToElementDisplayed(driver, String.format(LoginPageUI.EMAIL_ERROR_MESSAGE, errorMessage));
-		return isElementDisplay(driver, String.format(LoginPageUI.EMAIL_ERROR_MESSAGE, errorMessage));
-	}
-
-	public boolean isErrorValidateMessageDisplayed(String errorMessage) {
-		waitToElementDisplayed(driver, String.format(LoginPageUI.VALIDTE_EMAIL_ERROR_MESSAGE, errorMessage));
-		return isElementDisplay(driver, String.format(LoginPageUI.VALIDTE_EMAIL_ERROR_MESSAGE, errorMessage));
+	public String getErrorMessage(String string) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

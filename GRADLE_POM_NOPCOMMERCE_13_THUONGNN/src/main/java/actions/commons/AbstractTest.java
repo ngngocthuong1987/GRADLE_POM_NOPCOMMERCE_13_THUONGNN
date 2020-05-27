@@ -14,24 +14,36 @@ public class AbstractTest {
 	private WebDriver driver;
 
 	public WebDriver getBrowser(String browserName) {
-		if ("firefox".equalsIgnoreCase(browserName)) {
+		switch (browserName) {
+		case Constants.FIREFOX:
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
-		} else if ("headless_firefox".equalsIgnoreCase(browserName)) {
+			break;
+
+		case Constants.HEADLESS_FIREFOX:
 			WebDriverManager.firefoxdriver().setup();
-			FirefoxOptions options = new FirefoxOptions();
-			options.addArguments("--headless");
-			options.addArguments("window-size=1920x1080");
-			driver = new FirefoxDriver(options);
-		} else if ("chrome".equalsIgnoreCase(browserName)) {
+			FirefoxOptions firefoxOptions = new FirefoxOptions();
+			firefoxOptions.addArguments("--headless");
+			firefoxOptions.addArguments("window-size=1920x1080");
+			driver = new FirefoxDriver(firefoxOptions);
+			break;
+
+		case Constants.CHROME:
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
-		} else if ("headless_chrome".equalsIgnoreCase(browserName)) {
+			break;
+
+		case Constants.HEADLESS_CHROME:
 			WebDriverManager.chromedriver().setup();
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("headless");
-			options.addArguments("window-size=1920x1080");
-			driver = new ChromeDriver(options);
+			ChromeOptions chromeOptions = new ChromeOptions();
+			chromeOptions.addArguments("headless");
+			chromeOptions.addArguments("window-size=1920x1080");
+			driver = new ChromeDriver(chromeOptions);
+
+		default:
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
+			break;
 		}
 
 		driver.get(Constants.URL);

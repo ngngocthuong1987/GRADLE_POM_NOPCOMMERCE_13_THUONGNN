@@ -91,6 +91,16 @@ public class AbstractPages {
 		return driver.findElement(byXpath(locator));
 	}
 
+	public WebElement findElementByXpath(WebDriver driver, String locator, String...values) {
+		locator = String.format(locator, (Object[]) values);
+		return driver.findElement(byXpath(locator));
+	}
+
+	private WebElement findElementByCss(WebDriver driver, String locator, String...values) {
+		locator = String.format(locator, (Object[]) values);
+		return driver.findElement(byCss(locator));
+	}
+
 	public List<WebElement> findElementsByXpath(WebDriver driver, String locator){
 		return driver.findElements(byXpath(locator));
 	}
@@ -99,17 +109,35 @@ public class AbstractPages {
 		return By.xpath(locator);
 	}
 
+	public By byCss(String locator) {
+		return By.cssSelector(locator);
+	}
+
 	public void clickToElement(WebDriver driver, String locator) {
 		findElementByXpath(driver, locator).click();
 	}
 
-	public void sendKeyToElement(WebDriver driver, String locator, String value) {
-		findElementByXpath(driver, locator).sendKeys(value);
+	public void clickToElement(WebDriver driver, String locator, String...values) {
+		findElementByXpath(driver, locator, values).click();
 	}
 
-	public void selectItemInHtmlDropdown(WebDriver driver, String locator, String value) {
+	public void sendKeyToElement(WebDriver driver, String locator, String valueInput) {
+		findElementByXpath(driver, locator).sendKeys(valueInput);
+	}
+
+	public void sendKeyToElement(WebDriver driver, String locator, String...values) {
+		findElementByXpath(driver, locator, values[0]).clear();
+		findElementByXpath(driver, locator, values[0]).sendKeys(values[1]);
+	}
+
+	public void selectItemInHtmlDropdown(WebDriver driver, String locator, String valueSelect) {
 		select = new Select(findElementByXpath(driver, locator));
-		select.selectByVisibleText(value);
+		select.selectByVisibleText(valueSelect);
+	}
+
+	public void selectItemInHtmlDropdown(WebDriver driver, String locator, String...values) {
+		select = new Select(findElementByXpath(driver, locator, values[0]));
+		select.selectByVisibleText(values[1]);
 	}
 
 	public WebElement getSelectItemInHtmlDropdown(WebDriver driver, String locator) {
@@ -149,8 +177,21 @@ public class AbstractPages {
 		return findElementByXpath(driver, locator).getAttribute(attributeName);
 	}
 
-	public String getTextElement(WebDriver driver, String locator) {
+	public String getTextElementByXpath(WebDriver driver, String locator) {
 		return findElementByXpath(driver, locator).getText();
+	}
+
+	public String getTextElementByXpath(WebDriver driver, String locator, String...values) {
+		waitToElementDisplayedByXpath(driver, locator, values);
+		return findElementByXpath(driver, locator, values).getText();
+	}
+
+	public String getTextElementByCss(WebDriver driver, String locator) {
+		return findElementByCss(driver, locator).getText();
+	}
+
+	public String getTextElementByCss(WebDriver driver, String locator, String...values) {
+		return findElementByCss(driver, locator, values).getText();
 	}
 
 	public int countElementNumber(WebDriver driver, String locator) {
@@ -233,8 +274,25 @@ public class AbstractPages {
 		waitExplicit.until(ExpectedConditions.elementToBeClickable(byXpath(locator)));
 	}
 
-	public void waitToElementDisplayed(WebDriver driver, String locator) {
+	public void waitToElementDisplayedByXpath(WebDriver driver, String locator) {
 		waitExplicit = new WebDriverWait(driver, 30);
 		waitExplicit.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(byXpath(locator)));
+	}
+
+	public void waitToElementDisplayedByXpath(WebDriver driver, String locator, String...values) {
+		locator = String.format(locator, (Object[]) values);
+		waitExplicit = new WebDriverWait(driver, 30);
+		waitExplicit.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(byXpath(locator)));
+	}
+
+	public void waitToElementDisplayedByCss(WebDriver driver, String locator) {
+		waitExplicit = new WebDriverWait(driver, 30);
+		waitExplicit.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(byCss(locator)));
+	}
+
+	public void waitToElementDisplayedByCss(WebDriver driver, String locator, String...values) {
+		locator = String.format(locator, (Object[]) values);
+		waitExplicit = new WebDriverWait(driver, 30);
+		waitExplicit.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(byCss(locator)));
 	}
 }
