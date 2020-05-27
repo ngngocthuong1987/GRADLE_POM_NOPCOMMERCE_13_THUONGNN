@@ -122,6 +122,7 @@ public class AbstractPages {
 	}
 
 	public void sendKeyToElement(WebDriver driver, String locator, String valueInput) {
+		findElementByXpath(driver, locator).clear();
 		findElementByXpath(driver, locator).sendKeys(valueInput);
 	}
 
