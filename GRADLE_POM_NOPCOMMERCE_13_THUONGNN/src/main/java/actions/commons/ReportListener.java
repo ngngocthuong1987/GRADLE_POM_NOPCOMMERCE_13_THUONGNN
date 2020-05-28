@@ -56,11 +56,11 @@ public class ReportListener extends AbstractTest implements ITestListener {
 	@Override
 	public void onTestStart(ITestResult arg0) {
 		Reporter.log("Start @Test: " + arg0.getName(), true);
-		String className = arg0.getTestClass().getRealClass().getSimpleName();
-		String methodName = arg0.getMethod().getMethodName();
+		String testClassName = "Test class: ".concat(arg0.getTestClass().getRealClass().getSimpleName());
+		String testCaseName = "Test case: ".concat(arg0.getMethod().getMethodName());
 
 		//Create report for test case
-		logReport = extent.createTest(className.concat("-").concat(methodName));
+		logReport = extent.createTest(testClassName.concat("<br>").concat(testCaseName));
 	}
 
 	//This belongs to ITestListener and will execute, once the Test set/batch is finished
