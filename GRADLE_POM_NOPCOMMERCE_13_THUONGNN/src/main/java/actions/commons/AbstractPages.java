@@ -146,6 +146,11 @@ public class AbstractPages {
 		return select.getFirstSelectedOption();
 	}
 
+	public WebElement getSelectItemInHtmlDropdown(WebDriver driver, String locator, String...values) {
+		select = new Select(findElementByXpath(driver, locator, values[0]));
+		return select.getFirstSelectedOption();
+	}
+
 	public void selectItemInCustomDropdown(WebDriver driver, String dropdownLocator,
 			String allItemInDropdownLocator,
 			String expectedItemValue) throws InterruptedException {
@@ -295,5 +300,14 @@ public class AbstractPages {
 		locator = String.format(locator, (Object[]) values);
 		waitExplicit = new WebDriverWait(driver, 30);
 		waitExplicit.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(byCss(locator)));
+	}
+
+	public String getAttributeValueXpath(WebDriver driver, String locator) {
+		return findElementByXpath(driver, locator).getAttribute("value");
+	}
+
+	public String getAttributeValueXpath(WebDriver driver, String locator, String...values) {
+		waitToElementDisplayedByXpath(driver, locator, values);
+		return findElementByXpath(driver, locator, values).getAttribute("value");
 	}
 }

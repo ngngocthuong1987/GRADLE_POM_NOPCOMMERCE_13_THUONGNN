@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -27,10 +28,13 @@ public class Login extends AbstractTest {
 		homePageObject = PageGeneratorManager.getHomePageObject(driver);
 	}
 
+	@BeforeMethod
+	public void goToLoginPage() {
+		loginPageObject = homePageObject.clickToLoginPage();
+	}
+
 	@Test
 	public void testCase01LoginEmptyData() {
-		loginPageObject = homePageObject.clickToLoginPage();
-
 		loginPageObject.clickToLoginButton();
 
 		Assert.assertEquals(loginPageObject.getErrorMessage("Email"), LoginData.REQUIRED_EMAIL_MESSAGE);
@@ -38,8 +42,6 @@ public class Login extends AbstractTest {
 
 	@Test
 	public void testCase02LoginInvalidEmail() {
-		loginPageObject = homePageObject.clickToLoginPage();
-
 		loginPageObject.inputDataToElement("Email", LoginData.WRONG_EMAIL);
 		loginPageObject.inputDataToElement("Password", LoginData.PASSWORD);
 		loginPageObject.clickToLoginButton();
@@ -49,8 +51,6 @@ public class Login extends AbstractTest {
 
 	@Test
 	public void testCase03LoginWithEmailNotRegist() {
-		loginPageObject = homePageObject.clickToLoginPage();
-
 		loginPageObject.inputDataToElement("Email", LoginData.NOT_REGIST_EMAIL);
 		loginPageObject.inputDataToElement("Password", LoginData.PASSWORD);
 		loginPageObject.clickToLoginButton();
@@ -60,8 +60,6 @@ public class Login extends AbstractTest {
 
 	@Test
 	public void testCase04LoginWithEmptyPassword() {
-		loginPageObject = homePageObject.clickToLoginPage();
-
 		loginPageObject.inputDataToElement("Email", Register.email);
 		loginPageObject.clickToLoginButton();
 
@@ -70,8 +68,6 @@ public class Login extends AbstractTest {
 
 	@Test
 	public void testCase05LoginWithWrongPassword() {
-		loginPageObject = homePageObject.clickToLoginPage();
-
 		loginPageObject.inputDataToElement("Email", Register.email);
 		loginPageObject.inputDataToElement("Password", LoginData.WRONG_PASSWORD);
 		loginPageObject.clickToLoginButton();
@@ -81,8 +77,6 @@ public class Login extends AbstractTest {
 
 	@Test
 	public void testCase06LoginSuccess() {
-		loginPageObject = homePageObject.clickToLoginPage();
-
 		loginPageObject.inputDataToElement("Email", Register.email);
 		loginPageObject.inputDataToElement("Password", LoginData.PASSWORD);
 		homePageObject = loginPageObject.clickToLoginButton();
