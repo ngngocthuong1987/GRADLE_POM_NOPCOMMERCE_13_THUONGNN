@@ -2,7 +2,7 @@ package testdata;
 
 public class RegisterData {
 
-	// Error messages
+	//Error messages
 	public static final String REQUIRED_FIRST_NAME_MESSAGE = "First name is required.";
 	public static final String REQUIRED_LAST_NAME_MESSAGE = "Last name is required.";
 	public static final String REQUIRED_EMAIL_MESSAGE = "Email is required.";
@@ -13,7 +13,7 @@ public class RegisterData {
 	public static final String PASSWORD_NOT_MATCH_MESSAGE = "The password and confirmation password do not match.";
 	public static final String REGISTER_SUCCESS_MESSAGE = "Your registration completed";
 
-	// Data for register account
+	//Data for register account
 	public static final String FIRST_NAME = "Nguyen";
 	public static final String LAST_NAME = "Thuong";
 	public static final String WRONG_EMAIL = "thuongnn@";

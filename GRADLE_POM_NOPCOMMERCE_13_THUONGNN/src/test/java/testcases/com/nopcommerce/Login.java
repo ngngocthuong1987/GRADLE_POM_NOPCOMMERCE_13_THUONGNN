@@ -8,10 +8,11 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import actions.commons.AbstractTest;
+import actions.commons.Constants;
 import actions.commons.PageGeneratorManager;
 import actions.pageObjects.HomePageObject;
 import actions.pageObjects.LoginPageObject;
-import testdata.RegisterData;
+import testdata.LoginData;
 
 public class Login extends AbstractTest {
 
@@ -27,12 +28,66 @@ public class Login extends AbstractTest {
 	}
 
 	@Test
-	public void testCase01RegisterEmptyData() throws InterruptedException {
+	public void testCase01LoginEmptyData() {
 		loginPageObject = homePageObject.clickToLoginPage();
+
 		loginPageObject.clickToLoginButton();
 
-		Assert.assertEquals(loginPageObject.getErrorMessage("FirstName"), RegisterData.REQUIRED_FIRST_NAME_MESSAGE);
+		Assert.assertEquals(loginPageObject.getErrorMessage("Email"), LoginData.REQUIRED_EMAIL_MESSAGE);
+	}
 
+	@Test
+	public void testCase02LoginInvalidEmail() {
+		loginPageObject = homePageObject.clickToLoginPage();
+
+		loginPageObject.inputDataToElement("Email", LoginData.WRONG_EMAIL);
+		loginPageObject.inputDataToElement("Password", LoginData.PASSWORD);
+		loginPageObject.clickToLoginButton();
+
+		Assert.assertEquals(loginPageObject.getErrorMessage("Email"), LoginData.WRONG_EMAIL_MESSAGE);
+	}
+
+	@Test
+	public void testCase03LoginWithEmailNotRegist() {
+		loginPageObject = homePageObject.clickToLoginPage();
+
+		loginPageObject.inputDataToElement("Email", LoginData.NOT_REGIST_EMAIL);
+		loginPageObject.inputDataToElement("Password", LoginData.PASSWORD);
+		loginPageObject.clickToLoginButton();
+
+		Assert.assertEquals(loginPageObject.getErrorMessage(null), LoginData.NOT_REGIST_EMAIL_MESSAGE);
+	}
+
+	@Test
+	public void testCase04LoginWithEmptyPassword() {
+		loginPageObject = homePageObject.clickToLoginPage();
+
+		loginPageObject.inputDataToElement("Email", Register.email);
+		loginPageObject.clickToLoginButton();
+
+		Assert.assertEquals(loginPageObject.getErrorMessage(null), LoginData.WRONG_PASSWORD_MESSAGE);
+	}
+
+	@Test
+	public void testCase05LoginWithWrongPassword() {
+		loginPageObject = homePageObject.clickToLoginPage();
+
+		loginPageObject.inputDataToElement("Email", Register.email);
+		loginPageObject.inputDataToElement("Password", LoginData.WRONG_PASSWORD);
+		loginPageObject.clickToLoginButton();
+
+		Assert.assertEquals(loginPageObject.getErrorMessage(null), LoginData.WRONG_PASSWORD_MESSAGE);
+	}
+
+	@Test
+	public void testCase06LoginSuccess() {
+		loginPageObject = homePageObject.clickToLoginPage();
+
+		loginPageObject.inputDataToElement("Email", Register.email);
+		loginPageObject.inputDataToElement("Password", LoginData.PASSWORD);
+		homePageObject = loginPageObject.clickToLoginButton();
+
+		Assert.assertEquals(homePageObject.getCurrentUrl(driver), Constants.URL);
 	}
 
 	@AfterClass

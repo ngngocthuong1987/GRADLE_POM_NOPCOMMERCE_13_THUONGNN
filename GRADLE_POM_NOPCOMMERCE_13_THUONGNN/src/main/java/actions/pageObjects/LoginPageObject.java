@@ -1,5 +1,6 @@
 package actions.pageObjects;
 
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 
 import actions.commons.AbstractPages;
@@ -14,25 +15,23 @@ public class LoginPageObject extends AbstractPages {
 		this.driver = driver;
 	}
 
+	public void inputDataToElement(String idElement, String valueInput) {
+		waitToElementDisplayedByXpath(driver, LoginPageUI.DYNAMIC_LOCATOR_INPUT_ELEMENTS, idElement);
+		sendKeyToElement(driver, LoginPageUI.DYNAMIC_LOCATOR_INPUT_ELEMENTS, idElement, valueInput);
+	}
+
 	public HomePageObject clickToLoginButton() {
 		waitToElementDisplayedByXpath(driver, LoginPageUI.LOGIN_BUTTON);
 		clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
 		return PageGeneratorManager.getHomePageObject(driver);
 	}
 
-	public void inputToEmailTextBox(String email) {
-		waitToElementDisplayedByXpath(driver, LoginPageUI.EMAIL_TEXTBOX);
-		sendKeyToElement(driver, LoginPageUI.EMAIL_TEXTBOX, email);
+	public String getErrorMessage(String idElement) {
+		if (StringUtils.isNotEmpty(idElement)) {
+			waitToElementDisplayedByCss(driver, LoginPageUI.DYNAMIC_ERROR_MESSAGE, idElement);
+			return getTextElementByCss(driver, LoginPageUI.DYNAMIC_ERROR_MESSAGE, idElement);
+		} else {
+			return getTextElementByCss(driver, LoginPageUI.NOT_REGIST_EMAIL_MESSAGE);
+		}
 	}
-
-	public void inputToPasswordTextBox(String password) {
-		waitToElementDisplayedByXpath(driver, LoginPageUI.PASSWORD_TEXTBOX);
-		sendKeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);
-	}
-
-	public String getErrorMessage(String string) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

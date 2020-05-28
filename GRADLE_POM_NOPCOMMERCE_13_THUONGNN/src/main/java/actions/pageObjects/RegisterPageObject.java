@@ -1,5 +1,6 @@
 package actions.pageObjects;
 
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 
 import actions.commons.AbstractPages;
@@ -29,12 +30,13 @@ public class RegisterPageObject extends AbstractPages {
 	}
 
 	public String getErrorMessage(String nameElement) {
-		waitToElementDisplayedByCss(driver, RegisterPageUI.DYNAMIC_ERROR_MESSAGE, nameElement);
-		return getTextElementByCss(driver, RegisterPageUI.DYNAMIC_ERROR_MESSAGE, nameElement);
-	}
+		if (StringUtils.isNotEmpty(nameElement)) {
+			waitToElementDisplayedByCss(driver, RegisterPageUI.DYNAMIC_ERROR_MESSAGE, nameElement);
+			return getTextElementByCss(driver, RegisterPageUI.DYNAMIC_ERROR_MESSAGE, nameElement);
+		} else {
+			return getTextElementByCss(driver, RegisterPageUI.EXIST_EMAIL_MESSAGE);
+		}
 
-	public String getExistEmailMessage() {
-		return getTextElementByCss(driver, RegisterPageUI.EXIST_EMAIL_MESSAGE);
 	}
 
 	public String getSuccessMessage() {

@@ -19,17 +19,18 @@ public class Register extends AbstractTest {
 	private WebDriver driver;
 	private HomePageObject homePageObject;
 	private RegisterPageObject registerPageObject;
-	private String email = "thuongnn_" + Function.randomNumber() + "@gmail.com";
+	protected static String email;
 
 	@Parameters({"browser"})
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowser(browserName);
 		homePageObject = PageGeneratorManager.getHomePageObject(driver);
+		email = "thuongnn_" + Function.randomNumber() + "@gmail.com";
 	}
 
 	@Test
-	public void testCase01RegisterEmptyData() throws InterruptedException {
+	public void testCase01RegisterWithEmptyData() throws InterruptedException {
 		registerPageObject = homePageObject.clickToRegisterPage();
 
 		registerPageObject.clickToElement("register-button");
@@ -42,7 +43,7 @@ public class Register extends AbstractTest {
 	}
 
 	@Test
-	public void testCase02RegisterInvalidEmail() throws InterruptedException {
+	public void testCase02RegisterWithInvalidEmail() throws InterruptedException {
 		registerPageObject = homePageObject.clickToRegisterPage();
 
 		registerPageObject.clickToElement("gender-male");
@@ -61,7 +62,7 @@ public class Register extends AbstractTest {
 	}
 
 	@Test
-	public void testCase03RegisterExistEmail() throws InterruptedException {
+	public void testCase03RegisterWithExistEmail() throws InterruptedException {
 		registerPageObject = homePageObject.clickToRegisterPage();
 
 		registerPageObject.clickToElement("gender-male");
@@ -76,11 +77,11 @@ public class Register extends AbstractTest {
 		registerPageObject.inputDataToElement("ConfirmPassword", RegisterData.PASSWORD);
 		registerPageObject.clickToElement("register-button");
 
-		Assert.assertEquals(registerPageObject.getExistEmailMessage(), RegisterData.EXIST_EMAIL_MESSAGE);
+		Assert.assertEquals(registerPageObject.getErrorMessage(null), RegisterData.EXIST_EMAIL_MESSAGE);
 	}
 
 	@Test
-	public void testCase04RegisterExistEmail() throws InterruptedException {
+	public void testCase04RegisterWithExistEmail() throws InterruptedException {
 		registerPageObject = homePageObject.clickToRegisterPage();
 
 		registerPageObject.clickToElement("gender-male");
@@ -99,7 +100,7 @@ public class Register extends AbstractTest {
 	}
 
 	@Test
-	public void testCase05RegisterPasswordNotMatch() throws InterruptedException {
+	public void testCase05RegisterWithPasswordNotMatch() throws InterruptedException {
 		registerPageObject = homePageObject.clickToRegisterPage();
 
 		registerPageObject.clickToElement("gender-male");
