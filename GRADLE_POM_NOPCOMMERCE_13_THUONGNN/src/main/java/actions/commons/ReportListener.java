@@ -29,7 +29,7 @@ public class ReportListener extends AbstractTest implements ITestListener {
 	public static ExtentReports extent;
 	public static ExtentTest logReport;
 
-	// This belongs to ITestListener and will execute before starting of Test set/batch
+	//This belongs to ITestListener and will execute before starting of Test set/batch
 	@Override
 	public void onStart(ITestContext arg0) {
 		Reporter.log("About to begin executing Test: " + arg0.getName(), true);
@@ -52,53 +52,53 @@ public class ReportListener extends AbstractTest implements ITestListener {
 		extent.setSystemInfo("Envirnoment", "Production");
 	}
 
-	// This belongs to ITestListener and will execute before the main test start (@Test)
+	//This belongs to ITestListener and will execute before the main test start (@Test)
 	@Override
 	public void onTestStart(ITestResult arg0) {
 		Reporter.log("Start @Test: " + arg0.getName(), true);
+		String className = arg0.getTestClass().getRealClass().getSimpleName();
+		String methodName = arg0.getMethod().getMethodName();
 
-		// Create report for test case
-		logReport = extent.createTest(arg0.getInstanceName()
-				.concat(".")
-				.concat(arg0.getMethod().getMethodName()));
+		//Create report for test case
+		logReport = extent.createTest(className.concat("-").concat(methodName));
 	}
 
-	// This belongs to ITestListener and will execute, once the Test set/batch is finished
+	//This belongs to ITestListener and will execute, once the Test set/batch is finished
 	@Override
 	public void onFinish(ITestContext arg0) {
 		Reporter.log("Completed executing Test: " + arg0.getName(), true);
 
-		// Flush report
+		//Flush report
 		extent.flush();
 	}
 
-	// This belongs to ITestListener and will execute only when the test is pass
+	//This belongs to ITestListener and will execute only when the test is pass
 	@Override
 	public void onTestSuccess(ITestResult arg0) {
-		// This is calling the printTestResults method
+		//This is calling the printTestResults method
 		printTestResults(arg0);
 	}
 
-	// This belongs to ITestListener and will execute only on the event of fail test
+	//This belongs to ITestListener and will execute only on the event of fail test
 	@Override
 	public void onTestFailure(ITestResult arg0) {
-		// This is calling the printTestResults method
+		//This is calling the printTestResults method
 		printTestResults(arg0);
 	}
 
-	// This belongs to ITestListener and will execute only if any of the main test(@Test) get skipped
+	//This belongs to ITestListener and will execute only if any of the main test(@Test) get skipped
 	@Override
 	public void onTestSkipped(ITestResult arg0) {
 		printTestResults(arg0);
 	}
 
-	// This is just a piece of shit, ignore this
+	//This is just a piece of shit, ignore this
 	@Override
 	public void onTestFailedButWithinSuccessPercentage(ITestResult arg0) {
 	}
 
-	// This is the method which will be executed in case of test pass or fail
-	// This will provide the information on the test
+	//This is the method which will be executed in case of test pass or fail
+	//This will provide the information on the test
 	private void printTestResults(ITestResult result) {
 		Object testClass = result.getInstance();
 		WebDriver driver = ((AbstractTest) testClass).getDriver();
@@ -111,7 +111,6 @@ public class ReportListener extends AbstractTest implements ITestListener {
 			try {
 				logReport.fail("", MediaEntityBuilder.createScreenCaptureFromPath(captureImage(driver)).build());
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			break;
