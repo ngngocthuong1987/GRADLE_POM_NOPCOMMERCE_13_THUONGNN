@@ -1,4 +1,4 @@
-package testdata;
+package testdata.com.nopcommerce;
 
 public class MyAccountData {
 

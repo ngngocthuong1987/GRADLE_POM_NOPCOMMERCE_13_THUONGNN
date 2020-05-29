@@ -1,4 +1,4 @@
-package testdata;
+package testdata.com.nopcommerce;
 
 public class Payment {
 	public class LoginData {

@@ -13,7 +13,7 @@ import actions.commons.Function;
 import actions.commons.PageGeneratorManager;
 import actions.pageObjects.HomePageObject;
 import actions.pageObjects.RegisterPageObject;
-import testdata.RegisterData;
+import testdata.com.nopcommerce.RegisterData;
 
 public class Register extends AbstractTest {
 
@@ -36,7 +36,7 @@ public class Register extends AbstractTest {
 	}
 
 	@Test
-	public void testCase01RegisterWithEmptyData() throws InterruptedException {
+	public void testCase01RegisterWithEmptyData() {
 		registerPageObject.clickToElement("register-button");
 
 		Assert.assertEquals(registerPageObject.getErrorMessage("FirstName"), RegisterData.REQUIRED_FIRST_NAME_MESSAGE);
@@ -47,7 +47,7 @@ public class Register extends AbstractTest {
 	}
 
 	@Test
-	public void testCase02RegisterWithInvalidEmail() throws InterruptedException {
+	public void testCase02RegisterWithInvalidEmail() {
 		registerPageObject.clickToElement("gender-male");
 		registerPageObject.inputDataToElement("FirstName", RegisterData.FIRST_NAME);
 		registerPageObject.inputDataToElement("LastName", RegisterData.LAST_NAME);
@@ -64,7 +64,7 @@ public class Register extends AbstractTest {
 	}
 
 	@Test
-	public void testCase03RegisterWithExistEmail() throws InterruptedException {
+	public void testCase03RegisterWithExistEmail() {
 		registerPageObject.clickToElement("gender-male");
 		registerPageObject.inputDataToElement("FirstName", RegisterData.FIRST_NAME);
 		registerPageObject.inputDataToElement("LastName", RegisterData.LAST_NAME);
@@ -81,7 +81,7 @@ public class Register extends AbstractTest {
 	}
 
 	@Test
-	public void testCase04RegisterWithExistEmail() throws InterruptedException {
+	public void testCase04RegisterWithExistEmail() {
 		registerPageObject.clickToElement("gender-male");
 		registerPageObject.inputDataToElement("FirstName", RegisterData.FIRST_NAME);
 		registerPageObject.inputDataToElement("LastName", RegisterData.LAST_NAME);
@@ -98,7 +98,7 @@ public class Register extends AbstractTest {
 	}
 
 	@Test
-	public void testCase05RegisterWithPasswordNotMatch() throws InterruptedException {
+	public void testCase05RegisterWithPasswordNotMatch() {
 		registerPageObject.clickToElement("gender-male");
 		registerPageObject.inputDataToElement("FirstName", RegisterData.FIRST_NAME);
 		registerPageObject.inputDataToElement("LastName", RegisterData.LAST_NAME);
@@ -115,7 +115,7 @@ public class Register extends AbstractTest {
 	}
 
 	@Test
-	public void testCase06RegisterSuccess() throws InterruptedException {
+	public void testCase06RegisterSuccess() {
 		registerPageObject.clickToElement("gender-male");
 		registerPageObject.inputDataToElement("FirstName", RegisterData.FIRST_NAME);
 		registerPageObject.inputDataToElement("LastName", RegisterData.LAST_NAME);

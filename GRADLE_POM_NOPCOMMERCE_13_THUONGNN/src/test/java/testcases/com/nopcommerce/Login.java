@@ -13,7 +13,7 @@ import actions.commons.Constants;
 import actions.commons.PageGeneratorManager;
 import actions.pageObjects.HomePageObject;
 import actions.pageObjects.LoginPageObject;
-import testdata.LoginData;
+import testdata.com.nopcommerce.LoginData;
 
 public class Login extends AbstractTest {
 

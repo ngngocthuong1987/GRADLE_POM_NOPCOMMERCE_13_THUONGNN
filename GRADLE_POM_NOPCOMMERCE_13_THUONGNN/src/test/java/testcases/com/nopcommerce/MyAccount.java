@@ -13,8 +13,8 @@ import actions.commons.PageGeneratorManager;
 import actions.pageObjects.HomePageObject;
 import actions.pageObjects.LoginPageObject;
 import actions.pageObjects.MyAccountPageObject;
-import testdata.LoginData;
-import testdata.MyAccountData;
+import testdata.com.nopcommerce.LoginData;
+import testdata.com.nopcommerce.MyAccountData;
 
 public class MyAccount extends AbstractTest {
 
@@ -76,6 +76,6 @@ public class MyAccount extends AbstractTest {
 	public void afterClass() {
 
 		//Quit browser
-		//		driver.quit();
+		driver.quit();
 	}
 }
