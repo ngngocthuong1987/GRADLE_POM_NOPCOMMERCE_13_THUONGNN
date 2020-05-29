@@ -133,7 +133,6 @@ public class Register extends AbstractTest {
 
 	@AfterClass
 	public void afterClass() {
-
 		//Quit browser
 		driver.quit();
 	}
