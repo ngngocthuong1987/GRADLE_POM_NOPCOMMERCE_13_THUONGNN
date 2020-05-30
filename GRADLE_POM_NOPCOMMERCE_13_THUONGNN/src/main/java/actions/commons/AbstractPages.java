@@ -92,12 +92,12 @@ public class AbstractPages {
     }
 
     public WebElement findElementByXpath(WebDriver driver, String locator, String... values) {
-        locator = String.format(locator, values);
+        locator = String.format(locator, (Object[]) values);
         return driver.findElement(byXpath(locator));
     }
 
     private WebElement findElementByCss(WebDriver driver, String locator, String... values) {
-        locator = String.format(locator, values);
+        locator = String.format(locator, (Object[]) values);
         return driver.findElement(byCss(locator));
     }
 
@@ -286,7 +286,7 @@ public class AbstractPages {
     }
 
     public void waitToElementDisplayedByXpath(WebDriver driver, String locator, String... values) {
-        locator = String.format(locator, values);
+        locator = String.format(locator, (Object[]) values);
         waitExplicit = new WebDriverWait(driver, 30);
         waitExplicit.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(byXpath(locator)));
     }
@@ -297,7 +297,7 @@ public class AbstractPages {
     }
 
     public void waitToElementDisplayedByCss(WebDriver driver, String locator, String... values) {
-        locator = String.format(locator, values);
+        locator = String.format(locator, (Object[]) values);
         waitExplicit = new WebDriverWait(driver, 30);
         waitExplicit.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(byCss(locator)));
     }
