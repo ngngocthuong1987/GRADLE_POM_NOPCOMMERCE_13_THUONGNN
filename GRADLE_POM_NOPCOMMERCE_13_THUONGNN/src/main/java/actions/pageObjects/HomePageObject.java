@@ -25,10 +25,6 @@ public class HomePageObject extends AbstractPages {
         return PageGeneratorManager.getRegisterPageObject(driver);
     }
 
-    public boolean isLoginSuccess() {
-        return getCurrentUrl(driver).equals("https://demo.nopcommerce.com/abc");
-    }
-
     public MyAccountPageObject clickToMyAccountPage() {
         waitToElementClickable(driver, HomePageUI.MY_ACCOUNT_LINK);
         clickToElement(driver, HomePageUI.MY_ACCOUNT_LINK);
