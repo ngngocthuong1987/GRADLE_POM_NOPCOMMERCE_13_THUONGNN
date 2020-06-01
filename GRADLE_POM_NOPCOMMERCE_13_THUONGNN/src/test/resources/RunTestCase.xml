@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Nop Commerce" parallel="false" thread-count="4">
     <listeners>
-        <listener class-name="actions.commons.ReportListener"/>
+        <listener class-name="actions.commons.reportconfig.ReportListener"/>
     </listeners>
     <test name="Run on CHROME browser">
         <parameter name="browser" value="firefox"/>

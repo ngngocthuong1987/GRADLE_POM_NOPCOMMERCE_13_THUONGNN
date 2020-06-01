@@ -112,7 +112,7 @@ public abstract class AbstractTest {
         return checkEquals(actual, expected);
     }
 
-    protected WebDriver getDriver() {
+    public WebDriver getDriver() {
         return this.driver;
     }
 }
