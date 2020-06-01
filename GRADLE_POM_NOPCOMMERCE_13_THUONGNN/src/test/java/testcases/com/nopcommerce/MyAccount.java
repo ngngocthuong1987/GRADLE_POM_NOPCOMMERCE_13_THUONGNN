@@ -2,9 +2,9 @@ package testcases.com.nopcommerce;
 
 import actions.commons.AbstractTest;
 import actions.commons.PageGeneratorManager;
-import actions.pageObjects.HomePageObject;
-import actions.pageObjects.LoginPageObject;
-import actions.pageObjects.MyAccountPageObject;
+import actions.pageobjects.HomePageObject;
+import actions.pageobjects.LoginPageObject;
+import actions.pageobjects.MyAccountPageObject;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;

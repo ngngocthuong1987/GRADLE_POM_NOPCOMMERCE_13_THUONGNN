@@ -1,9 +1,9 @@
 package actions.commons;
 
-import actions.pageObjects.HomePageObject;
-import actions.pageObjects.LoginPageObject;
-import actions.pageObjects.MyAccountPageObject;
-import actions.pageObjects.RegisterPageObject;
+import actions.pageobjects.HomePageObject;
+import actions.pageobjects.LoginPageObject;
+import actions.pageobjects.MyAccountPageObject;
+import actions.pageobjects.RegisterPageObject;
 import org.openqa.selenium.WebDriver;
 
 public class PageGeneratorManager {

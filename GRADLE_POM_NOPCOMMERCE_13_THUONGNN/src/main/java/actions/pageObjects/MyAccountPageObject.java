@@ -1,4 +1,4 @@
-package actions.pageObjects;
+package actions.pageobjects;
 
 import actions.commons.AbstractPages;
 import interfaces.pageUIs.MyAccountPageUI;
