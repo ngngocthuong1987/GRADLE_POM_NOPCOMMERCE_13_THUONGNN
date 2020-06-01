@@ -2,7 +2,8 @@ package actions.pageobjects;
 
 import actions.commons.AbstractPages;
 import actions.commons.PageGeneratorManager;
-import interfaces.pageUIs.HomePageUI;
+import interfaces.pageuis.HomePageUI;
+
 import org.openqa.selenium.WebDriver;
 
 public class HomePageObject extends AbstractPages {

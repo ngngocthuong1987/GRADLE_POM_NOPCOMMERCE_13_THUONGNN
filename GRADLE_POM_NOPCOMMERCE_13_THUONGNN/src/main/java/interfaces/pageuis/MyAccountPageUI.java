@@ -1,4 +1,4 @@
-package interfaces.pageUIs;
+package interfaces.pageuis;
 
 public class MyAccountPageUI {
 

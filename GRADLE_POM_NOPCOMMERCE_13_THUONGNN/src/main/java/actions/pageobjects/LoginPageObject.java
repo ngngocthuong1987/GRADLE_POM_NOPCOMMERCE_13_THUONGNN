@@ -2,7 +2,8 @@ package actions.pageobjects;
 
 import actions.commons.AbstractPages;
 import actions.commons.PageGeneratorManager;
-import interfaces.pageUIs.LoginPageUI;
+import interfaces.pageuis.LoginPageUI;
+
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 

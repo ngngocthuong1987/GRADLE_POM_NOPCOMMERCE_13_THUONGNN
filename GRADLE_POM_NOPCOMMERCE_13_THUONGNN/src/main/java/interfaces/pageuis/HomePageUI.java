@@ -1,4 +1,4 @@
-package interfaces.pageUIs;
+package interfaces.pageuis;
 
 public class HomePageUI {
     public static final String LOGIN_LINK = "//a[@class='ico-login' and text()='Log in']";

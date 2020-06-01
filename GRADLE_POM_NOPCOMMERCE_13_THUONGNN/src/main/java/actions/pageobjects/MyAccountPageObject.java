@@ -1,7 +1,8 @@
 package actions.pageobjects;
 
 import actions.commons.AbstractPages;
-import interfaces.pageUIs.MyAccountPageUI;
+import interfaces.pageuis.MyAccountPageUI;
+
 import org.openqa.selenium.WebDriver;
 
 public class MyAccountPageObject extends AbstractPages {

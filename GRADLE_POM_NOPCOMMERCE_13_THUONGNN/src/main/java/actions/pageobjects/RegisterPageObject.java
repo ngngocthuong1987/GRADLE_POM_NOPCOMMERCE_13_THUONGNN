@@ -1,7 +1,8 @@
 package actions.pageobjects;
 
 import actions.commons.AbstractPages;
-import interfaces.pageUIs.RegisterPageUI;
+import interfaces.pageuis.RegisterPageUI;
+
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 
