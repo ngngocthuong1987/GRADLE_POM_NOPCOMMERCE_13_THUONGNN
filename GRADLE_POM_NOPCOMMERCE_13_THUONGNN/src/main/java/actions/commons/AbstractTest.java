@@ -9,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.Assert;
 import org.testng.Reporter;
 
-public class AbstractTest {
+public abstract class AbstractTest {
     private WebDriver driver;
 
     public WebDriver getBrowser(String browserName) {

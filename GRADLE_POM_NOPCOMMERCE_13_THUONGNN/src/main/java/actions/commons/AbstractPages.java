@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-public class AbstractPages {
+public abstract class AbstractPages {
 
     public Actions action;
     public Select select;
