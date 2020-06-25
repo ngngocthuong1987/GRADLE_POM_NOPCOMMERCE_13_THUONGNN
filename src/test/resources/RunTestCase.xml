@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Nop Commerce" parallel="false" thread-count="4">
+    <listeners>
+        <listener class-name="actions.commons.reportconfig.ReportListener"/>
+    </listeners>
+    <test name="Run on CHROME browser">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="testcases.com.nopcommerce.Register"/>
+            <class name="testcases.com.nopcommerce.Login"/>
+            <class name="testcases.com.nopcommerce.MyAccount"/>
+        </classes>
+    </test>
+</suite>
