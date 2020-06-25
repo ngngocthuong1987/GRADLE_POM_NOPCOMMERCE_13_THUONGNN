@@ -7,8 +7,6 @@
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="testcases.com.nopcommerce.Register"/>
-            <class name="testcases.com.nopcommerce.Login"/>
-            <class name="testcases.com.nopcommerce.MyAccount"/>
         </classes>
     </test>
 </suite>
