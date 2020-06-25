@@ -30,7 +30,7 @@ public class Register extends AbstractTest {
         registerPageObject = homePageObject.clickToRegisterPage();
     }
 
-
+    @Test
     public void testCase01RegisterWithEmptyData() {
         registerPageObject.clickToElement("register-button");
 
