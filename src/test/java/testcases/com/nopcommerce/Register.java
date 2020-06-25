@@ -17,10 +17,9 @@ public class Register extends AbstractTest {
     private HomePageObject homePageObject;
     private RegisterPageObject registerPageObject;
 
-    @Parameters({"browser"})
     @BeforeClass
-    public void beforeClass(String browserName) {
-        driver = getBrowser(browserName);
+    public void beforeClass() {
+        driver = getBrowser("firefox");
         homePageObject = PageGeneratorManager.getHomePageObject(driver);
         email = "thuongnn_" + Function.randomNumber() + "@gmail.com";
     }

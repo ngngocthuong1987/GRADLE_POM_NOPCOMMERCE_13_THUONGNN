@@ -16,10 +16,9 @@ public class Login extends AbstractTest {
     private HomePageObject homePageObject;
     private LoginPageObject loginPageObject;
 
-    @Parameters({"browser"})
     @BeforeClass
-    public void beforeClass(String browserName) {
-        driver = getBrowser(browserName);
+    public void beforeClass() {
+        driver = getBrowser("firefox");
         homePageObject = PageGeneratorManager.getHomePageObject(driver);
     }
 
